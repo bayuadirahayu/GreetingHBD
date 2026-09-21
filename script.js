@@ -27,7 +27,7 @@ const GALLERY_PHOTOS = [
   { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39 (1).jpeg", title: "Dunia Bersamamu", date: "Kenangan Manis #17", pin: "⭐" },
   { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39 (2).jpeg", title: "Detik Abadi", date: "Kenangan Manis #18", pin: "💖" },
   { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39.jpeg", title: "Terindah & Abadi", date: "Kenangan Manis #19", pin: "🌼" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.40.jpeg", title: "Happy 21st Birthday, Septi! 🎂", date: "Kenangan Manis #20", pin: "💖" }
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.40.jpeg", title: "Happy 21st Birthday, Fatma! 🎂", date: "Kenangan Manis #20", pin: "💖" }
 ];
 
 // ==========================================================================
@@ -743,9 +743,9 @@ function initInteractiveWish() {
 📅 *Tanggal:* ${todayDate}
 ━━━━━━━━━━━━━━━━━━━━━
 
-Halo! Septi baru saja membuka surprise website ulang tahun ke-21 yang aku buat khusus untukmu! 🎉
+Halo! Fatma baru saja membuka surprise website ulang tahun ke-21 yang aku buat khusus untukmu! 🎉
 
-Dan ini adalah *Wishlist Impian* Septi:
+Dan ini adalah *Wishlist Impian* Fatma:
 
 🎁 *Kategori Pilihan:*
    ➜ ${category}
@@ -754,7 +754,7 @@ Dan ini adalah *Wishlist Impian* Septi:
    "${note}"
 
 ━━━━━━━━━━━━━━━━━━━━━
-💖 Semoga di hari ulang tahun yang ke-21 ini semua impian Septi segera terkabul ya! Selamat ulang tahun, Septi Nur Fatma! 🌸✨🎈
+💖 Semoga di hari ulang tahun yang ke-21 ini semua impian Fatma segera terkabul ya! Selamat ulang tahun, Septi Nur Fatma! 🌸✨🎈
 
 _Dikirim melalui: Birthday Surprise Website_ 💌`;
     const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(waMessage)}`;
