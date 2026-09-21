@@ -5,26 +5,29 @@
  */
 
 // ==========================================================================
-// 1. DATA ASSETS: 17 MEMORY PHOTOS FROM IMAGE/ FOLDER
+// 1. DATA ASSETS: 20 MEMORY PHOTOS FROM IMAGE/ FOLDER
 // ==========================================================================
 const GALLERY_PHOTOS = [
   { file: "Image/WhatsApp Image 2026-09-21 at 17.10.32 (1).jpeg", title: "Momen Indah", date: "Kenangan Manis #1", pin: "🌸" },
   { file: "Image/WhatsApp Image 2026-09-21 at 17.10.32 (2).jpeg", title: "Senyuman Manis", date: "Kenangan Manis #2", pin: "✨" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.32 (3).jpeg", title: "Detik Bahagia", date: "Kenangan Manis #3", pin: "💖" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.32.jpeg", title: "Ceria Selalu", date: "Kenangan Manis #4", pin: "⭐" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.34 (1).jpeg", title: "Hari Yang Indah", date: "Kenangan Manis #5", pin: "🌼" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.34 (2).jpeg", title: "Tawa Riang", date: "Kenangan Manis #6", pin: "🌷" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.34.jpeg", title: "Bersinar Terang", date: "Kenangan Manis #7", pin: "🎀" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.36 (1).jpeg", title: "Gaya Anggun", date: "Kenangan Manis #8", pin: "🌸" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.36.jpeg", title: "Potret Istimewa", date: "Kenangan Manis #9", pin: "✨" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.37 (1).jpeg", title: "Matahari Pagi", date: "Kenangan Manis #10", pin: "⭐" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.37.jpeg", title: "Bunga Hati", date: "Kenangan Manis #11", pin: "🌹" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.38 (1).jpeg", title: "Pesona Menawan", date: "Kenangan Manis #12", pin: "💖" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.38.jpeg", title: "Senyuman Hangat", date: "Kenangan Manis #13", pin: "🌼" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39 (1).jpeg", title: "Dunia Bersamamu", date: "Kenangan Manis #14", pin: "🌷" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39 (2).jpeg", title: "Detik Abadi", date: "Kenangan Manis #15", pin: "🎀" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39.jpeg", title: "Terindah & Abadi", date: "Kenangan Manis #16", pin: "✨" },
-  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.40.jpeg", title: "Happy 21st Birthday, Septi! 🎂", date: "Kenangan Manis #17", pin: "💖" }
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.32.jpeg", title: "Ceria Selalu", date: "Kenangan Manis #3", pin: "⭐" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.34 (1).jpeg", title: "Hari Yang Indah", date: "Kenangan Manis #4", pin: "🌼" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.34 (2).jpeg", title: "Tawa Riang", date: "Kenangan Manis #5", pin: "🌷" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.10.34.jpeg", title: "Bersinar Terang", date: "Kenangan Manis #6", pin: "🎀" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.11.10.jpeg", title: "Pesona Cantik", date: "Kenangan Manis #7", pin: "🌸" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.35.jpeg", title: "Sinar Kebahagiaan", date: "Kenangan Manis #8", pin: "✨" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.36 (1).jpeg", title: "Gaya Anggun", date: "Kenangan Manis #9", pin: "⭐" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.36 (2).jpeg", title: "Ekspresi Manis", date: "Kenangan Manis #10", pin: "🌼" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.36.jpeg", title: "Potret Istimewa", date: "Kenangan Manis #11", pin: "🌹" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.37 (1).jpeg", title: "Matahari Pagi", date: "Kenangan Manis #12", pin: "💖" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.37.jpeg", title: "Bunga Hati", date: "Kenangan Manis #13", pin: "🌷" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.38 (1).jpeg", title: "Pesona Menawan", date: "Kenangan Manis #14", pin: "🎀" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.38 (2).jpeg", title: "Keceriaan Abadi", date: "Kenangan Manis #15", pin: "✨" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.38.jpeg", title: "Senyuman Hangat", date: "Kenangan Manis #16", pin: "🌸" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39 (1).jpeg", title: "Dunia Bersamamu", date: "Kenangan Manis #17", pin: "⭐" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39 (2).jpeg", title: "Detik Abadi", date: "Kenangan Manis #18", pin: "💖" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.39.jpeg", title: "Terindah & Abadi", date: "Kenangan Manis #19", pin: "🌼" },
+  { file: "Image/WhatsApp Image 2026-09-21 at 17.21.40.jpeg", title: "Happy 21st Birthday, Septi! 🎂", date: "Kenangan Manis #20", pin: "💖" }
 ];
 
 // ==========================================================================
@@ -304,7 +307,7 @@ function initPolaroidGallery() {
 
   if (!board) return;
 
-  // Generate cards for all 17 photos
+  // Generate cards for all 20 photos
   board.innerHTML = '';
   GALLERY_PHOTOS.forEach((photo, idx) => {
     const card = document.createElement('div');
