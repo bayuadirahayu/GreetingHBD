@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Selamat Ulang Tahun Ke-21, Septi Nur Fatma! ✨ Kad Ucapan Interaktif</title>
+  <meta name="description" content="Laman web ucapan ulang tahun interaktif ke-21 khas untuk Septi Nur Fatma dengan muzik The 1975, galeri foto polaroid, warkah kenangan, dan kotak impian.">
+
+  <!-- Google Fonts: Pacifico, Dancing Script, Fredoka, Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- CDN Dependencies: GSAP 3, Draggable, Canvas-Confetti, Lucide Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Ambient Floating Canvas Background (Sparkles, Soft Hearts, Stardust) -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Interactive Sparkle Trail Canvas -->
+  <canvas id="sparkle-trail"></canvas>
+
+  <!-- Floating Audio Mini-Player Control (Persistent across all screens) -->
+  <div id="floating-audio-pill" class="floating-audio-pill hidden" title="Kawal Muzik Latar">
+    <button id="audio-toggle-btn" class="audio-pill-btn" aria-label="Mainkan atau Jeda Muzik">
+      <div class="sound-wave" id="audio-sound-wave">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <i data-lucide="music" class="music-icon"></i>
+      <span class="track-label">The 1975 - About You</span>
+    </button>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="bg-audio" preload="auto" src="The 1975 - About You (Official).mp3"></audio>
+
+  <!-- Main Application Container -->
+  <main id="app-container" class="app-container">
+
+    <!-- ============================================== -->
+    <!-- SCREEN 1: LANDING & ENVELOPE (SAMPUL SURAT 3D) -->
+    <!-- ============================================== -->
+    <section id="screen-envelope" class="screen active">
+      <div class="screen-content envelope-wrapper">
+        <!-- Floating Doodles & Stickers -->
+        <div class="floating-sticker sticker-star-1">⭐</div>
+        <div class="floating-sticker sticker-flower-1">🌸</div>
+        <div class="floating-sticker sticker-heart-1">💖</div>
+        <div class="floating-sticker sticker-sparkle-1">✨</div>
+        <div class="floating-sticker sticker-balloon-1">🎈</div>
+
+        <!-- Envelope Call to Action Header -->
+        <div class="envelope-header">
+          <span class="tag-badge">Special 21st Delivery For Septi Nur Fatma 💌</span>
+          <h1 class="envelope-instruction">Press the Envelope</h1>
+          <p class="envelope-subtext">Ada warkah & kejutan istimewa untuk Septi menanti di dalam...</p>
+        </div>
+
+        <!-- 3D Realistic Envelope Element -->
+        <div class="envelope-3d-scene" id="envelope-clickable">
+          <div class="envelope" id="envelope-box">
+            <!-- Front Flaps & Interior -->
+            <div class="envelope-back"></div>
+
+            <!-- Letter Sliding Out inside the Envelope -->
+            <div class="envelope-letter" id="envelope-letter-preview">
+              <div class="letter-top-tape"></div>
+              <div class="letter-inner-content">
+                <span class="letter-stamp">💌</span>
+                <h3>Selamat Ulang Tahun Ke-21!</h3>
+                <p>Khas untuk Septi Nur Fatma... Klik untuk membuka kejutan terindah!</p>
+                <span class="letter-mini-deco">✨ 🌸 ✨</span>
+              </div>
+            </div>
+
+            <!-- Pocket Bottom & Sides -->
+            <div class="envelope-pocket"></div>
+
+            <!-- Top Flap (Opens upwards) -->
+            <div class="envelope-flap-top" id="envelope-flap">
+              <!-- Wax Seal Mounted on the Flap Tip -->
+              <div class="wax-seal" id="wax-seal-btn" title="Klik untuk membuka!">
+                <div class="wax-seal-outer">
+                  <div class="wax-seal-inner">
+                    <span class="wax-seal-icon">🎂</span>
+                    <span class="wax-seal-text">OPEN ME</span>
+                  </div>
+                </div>
+                <div class="seal-glow-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hint Footer -->
+        <div class="envelope-tap-hint">
+          <i data-lucide="hand-metal" class="hint-hand-icon"></i>
+          <span>Sentuh cop lilin atau sampul untuk buka</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 2: KAD UCAPAN PEMBUKA (WELCOME CARD)   -->
+    <!-- ============================================== -->
+    <section id="screen-welcome" class="screen">
+      <div class="screen-content welcome-wrapper">
+        <!-- Floating Stickers -->
+        <div class="floating-sticker sticker-butter-1">🦋</div>
+        <div class="floating-sticker sticker-flower-2">🌼</div>
+        <div class="floating-sticker sticker-ribbon-1">🎀</div>
+        <div class="floating-sticker sticker-cake-1">🎂</div>
+        <div class="floating-sticker sticker-sparkle-2">✨</div>
+
+        <div class="welcome-card-box glass-panel">
+          <div class="card-washi-tape tape-top-left"></div>
+          <div class="card-washi-tape tape-top-right"></div>
+
+          <!-- Decorative Header -->
+          <div class="welcome-header">
+            <span class="celebration-pill">🎉 Happy 21st Birthday, Septi! 🎉</span>
+            <h1 class="welcome-title text-gradient">Happy 21st Birthday!</h1>
+            <h2 class="welcome-recipient-name">Septi Nur Fatma</h2>
+            <p class="welcome-subtitle">Semoga di usia yang ke-21 ini, setiap langkah Septi sentiasa dipenuhi keberkatan, kebahagiaan, tawa riang, dan impian yang menjadi kenyataan.</p>
+          </div>
+
+          <!-- Polaroid Composition Showcase -->
+          <div class="polaroid-tilted-cluster">
+            <div class="polaroid-mini tilt-left" id="welcome-polaroid-1">
+              <div class="polaroid-pin">📌</div>
+              <div class="polaroid-img-wrapper">
+                <img src="Image/WhatsApp Image 2026-09-21 at 17.10.32.jpeg" alt="Sweet Memory" loading="lazy">
+              </div>
+              <span class="polaroid-caption">Senyuman Terindah 💖</span>
+            </div>
+
+            <div class="polaroid-mini tilt-center" id="welcome-polaroid-2">
+              <div class="polaroid-pin">🌸</div>
+              <div class="polaroid-img-wrapper">
+                <img src="Image/WhatsApp Image 2026-09-21 at 17.21.36.jpeg" alt="Special Moment" loading="lazy">
+              </div>
+              <span class="polaroid-caption">Hari Bahagia ✨</span>
+            </div>
+
+            <div class="polaroid-mini tilt-right" id="welcome-polaroid-3">
+              <div class="polaroid-pin">⭐</div>
+              <div class="polaroid-img-wrapper">
+                <img src="Image/WhatsApp Image 2026-09-21 at 17.21.40.jpeg" alt="Forever Cute" loading="lazy">
+              </div>
+              <span class="polaroid-caption">Sentiasa Ceria 🌷</span>
+            </div>
+          </div>
+
+          <!-- Warm Personal Note -->
+          <div class="welcome-message-quote">
+            <p>"Setiap saat yang berlalu adalah memori indah, dan hari ini adalah saat untuk meraikan insan yang paling istimewa."</p>
+          </div>
+
+          <!-- Interactive Action Button with Shimmer -->
+          <div class="welcome-cta-area">
+            <button id="btn-tap-surprise" class="btn-shimmer pulse-animation">
+              <span class="btn-shimmer-bg"></span>
+              <span class="btn-content">
+                <span class="btn-icon">🎁</span>
+                <span class="btn-text">TAP FOR SURPRISE</span>
+                <span class="btn-sparkle">✨</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 3: MENU UTAMA (CHOOSE THE SURPRISE)    -->
+    <!-- ============================================== -->
+    <section id="screen-menu" class="screen">
+      <div class="screen-content menu-wrapper">
+        <!-- Floating Stickers -->
+        <div class="floating-sticker sticker-note-1">🎵</div>
+        <div class="floating-sticker sticker-gift-1">🎁</div>
+        <div class="floating-sticker sticker-star-2">🌟</div>
+        <div class="floating-sticker sticker-camera-1">📸</div>
+
+        <!-- Menu Header -->
+        <div class="menu-header">
+          <span class="tag-badge">Kejutan Ulang Tahun Ke-21 Septi ✨</span>
+          <h1 class="menu-title">Pilih Kejutanmu</h1>
+          <p class="menu-desc">Khusus untuk Septi Nur Fatma, pilih salah satu untuk menjelajahi kejutan istimewa ini:</p>
+        </div>
+
+        <!-- 4 Playful 3D / Doodle Interactive Cards -->
+        <div class="surprise-grid">
+          <!-- Card 1: Journey (Vintage Camera) -->
+          <div class="surprise-card card-journey" data-target="journey" tabindex="0" role="button" aria-label="Buka Galeri Foto Polaroid">
+            <div class="card-glow-halo"></div>
+            <div class="card-icon-3d bobbing-1">
+              <div class="icon-circle">
+                <span class="emoji-icon">📸</span>
+              </div>
+              <div class="shadow-oval"></div>
+            </div>
+            <div class="card-text-group">
+              <h2 class="card-name">Perjalanan Kita</h2>
+              <span class="card-subtitle">Galeri Foto Polaroid</span>
+              <p class="card-snippet">Seret & jelajahi foto-foto kenangan manis kita yang tersebar di sini.</p>
+            </div>
+            <div class="card-arrow-pill">
+              <span>Buka Galeri</span>
+              <i data-lucide="chevron-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 2: Moment (Vintage Pocket Watch) -->
+          <div class="surprise-card card-moment" data-target="moment" tabindex="0" role="button" aria-label="Buka Warkah Kenangan">
+            <div class="card-glow-halo"></div>
+            <div class="card-icon-3d bobbing-2">
+              <div class="icon-circle">
+                <span class="emoji-icon">⏳</span>
+              </div>
+              <div class="shadow-oval"></div>
+            </div>
+            <div class="card-text-group">
+              <h2 class="card-name">Momen Spesial</h2>
+              <span class="card-subtitle">Surat & Detik Paling Indah</span>
+              <p class="card-snippet">Sebuah surat yang ditulis dengan tulus dari hati, khusus untukmu.</p>
+            </div>
+            <div class="card-arrow-pill">
+              <span>Baca Surat</span>
+              <i data-lucide="chevron-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 3: Playlist (Vinyl Record) -->
+          <div class="surprise-card card-playlist" data-target="playlist" tabindex="0" role="button" aria-label="Buka Pemain Muzik Retro">
+            <div class="card-glow-halo"></div>
+            <div class="card-icon-3d bobbing-3">
+              <div class="icon-circle">
+                <span class="emoji-icon">💿</span>
+              </div>
+              <div class="shadow-oval"></div>
+            </div>
+            <div class="card-text-group">
+              <h2 class="card-name">Playlist Spesial</h2>
+              <span class="card-subtitle">Piringan Hitam & Musik</span>
+              <p class="card-snippet">Dengarkan alunan lagu "The 1975 - About You" di meja piringan hitam retro.</p>
+            </div>
+            <div class="card-arrow-pill">
+              <span>Putar Musik</span>
+              <i data-lucide="chevron-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 4: Gift (Interactive Wish) -->
+          <div class="surprise-card card-gift" data-target="gift" tabindex="0" role="button" aria-label="Buka Interactive Wish">
+            <div class="card-glow-halo"></div>
+            <div class="card-icon-3d bobbing-4">
+              <div class="icon-circle">
+                <span class="emoji-icon">✨</span>
+              </div>
+              <div class="shadow-oval"></div>
+            </div>
+            <div class="card-text-group">
+              <h2 class="card-name">Buat Permintaan</h2>
+              <span class="card-subtitle">Impian & Hadiah Kecil</span>
+              <p class="card-snippet">Ada satu hal kecil yang ingin aku berikan... Apa yang kamu impikan sekarang?</p>
+            </div>
+            <div class="card-arrow-pill">
+              <span>Tulis Impian</span>
+              <i data-lucide="chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 4: SUB-MENU DETAIL CONTAINER            -->
+    <!-- ============================================== -->
+    <section id="screen-detail" class="screen">
+      <!-- Floating Back Button -->
+      <nav class="detail-nav-bar">
+        <button id="btn-back-to-menu" class="btn-back-floating" aria-label="Kembali ke Menu Utama">
+          <i data-lucide="arrow-left"></i>
+          <span>Kembali ke Menu</span>
+        </button>
+        <span class="detail-screen-badge" id="detail-category-badge">Kategori</span>
+      </nav>
+
+      <div class="screen-content detail-content-wrapper">
+        <!-- ------------------------------------------------ -->
+        <!-- SUB-MENU 1: JOURNEY (POLAROID PHOTO GALLERY)    -->
+        <!-- ------------------------------------------------ -->
+        <div id="subview-journey" class="subview hidden">
+          <div class="subview-header">
+            <h1 class="subview-title">Perjalanan & Kenangan Kita 📸</h1>
+            <p class="subview-desc">Seret foto-foto polaroid di bawah untuk mengaturnya sesukamu, atau klik foto untuk melihat tampilan penuh.</p>
+            <div class="gallery-controls">
+              <button id="btn-shuffle-polaroids" class="btn-sub-action">
+                <i data-lucide="shuffle"></i> Acak Susunan
+              </button>
+              <button id="btn-toggle-grid" class="btn-sub-action">
+                <i data-lucide="layout-grid"></i> Mode Grid / Meja
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Drag Area / Scattered Board -->
+          <div class="polaroid-scatter-board" id="polaroid-board">
+            <!-- Dynamically populated with all 17 photos from Image/ via script.js -->
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------ -->
+        <!-- SUB-MENU 2: MOMENT (VINTAGE LETTER & MEMORIES)   -->
+        <!-- ------------------------------------------------ -->
+        <div id="subview-moment" class="subview hidden">
+          <div class="subview-header">
+            <h1 class="subview-title">Surat & Momen Paling Indah ⏳</h1>
+            <p class="subview-desc">Sepucuk surat yang diabadikan dengan tulus, khusus untuk hari ulang tahunmu.</p>
+          </div>
+
+          <div class="moment-container">
+            <!-- Vintage Rose Picture Frame -->
+            <div class="moment-rose-frame">
+              <div class="frame-border">
+                <div class="frame-inner-img">
+                  <img src="Image/WhatsApp Image 2026-09-21 at 17.21.37.jpeg" alt="Potret Indah Septi" loading="lazy">
+                </div>
+                <div class="rose-corner-deco rose-top-left">🌹</div>
+                <div class="rose-corner-deco rose-bottom-right">🌹</div>
+              </div>
+              <span class="frame-tag">Septi Nur Fatma • Ulang Tahun ke-21 ✨</span>
+            </div>
+
+            <!-- Vintage Crumpled Parchment Letter -->
+            <div class="vintage-letter-card">
+              <div class="letter-wax-stamp-deco">❤️</div>
+              <div class="vintage-paper-texture">
+                <div class="letter-date">21 September 2026</div>
+                <h2 class="letter-salutation">Untuk Septi Nur Fatma yang Tersayang,</h2>
+                <div class="letter-body-text">
+                  <p>Selamat ulang tahun yang ke-21, Septi! Hari ini adalah hari yang sangat istimewa — hari di mana semua orang merayakan kehadiran seseorang yang begitu berarti dan menyenangkan.</p>
+                  <p>Melangkah ke usia 21 tahun adalah babak baru yang penuh keindahan dan kemungkinan. Terima kasih sudah selalu menjadi Septi yang ceria, penuh kasih, kuat, dan selalu menerangi hari-hari orang-orang di sekitarmu dengan senyuman manismu.</p>
+                  <p>Semoga di usia 21 ini, setiap langkah Septi selalu dipermudah, diberikan kesehatan yang baik, meraih sukses dalam setiap impian, serta kebahagiaan yang melimpah bersama orang-orang tercinta.</p>
+                  <p>Teruslah melangkah dengan penuh keyakinan dan percaya pada potensi diri sendiri. Selamat ulang tahun yang ke-21, Septi Nur Fatma! 🎂🌷</p>
+                </div>
+                <div class="letter-closing">
+                  <span>Dengan Doa & Penuh Kasih Sayang,</span>
+                  <div class="signature-font">Selalu Ada Untuk Septi 🌷</div>
+                </div>
+              </div>
+
+              <!-- Interactive Floating Rose Petal Spawner -->
+              <div class="letter-interactive-petal-area">
+                <button id="btn-send-petals" class="btn-petal-love">
+                  <span>🌸 Tebar Bunga Kasih Sayang</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------ -->
+        <!-- SUB-MENU 3: PLAYLIST (RETRO VINYL TURNTABLE)    -->
+        <!-- ------------------------------------------------ -->
+        <div id="subview-playlist" class="subview hidden">
+          <div class="subview-header">
+            <span class="celebration-pill">🎵 Lagu Spesial untuk Septi 🎵</span>
+            <h1 class="subview-title">Melodi Istimewa untuk Septi 💖</h1>
+            <p class="subview-desc">Alunan lagu "The 1975 - About You" yang menemani hari ulang tahun ke-21 Septi dengan penuh kehangatan.</p>
+          </div>
+
+          <div class="turntable-outer-deck">
+            <!-- Vintage Vinyl Turntable Base -->
+            <div class="turntable-body">
+              <div class="turntable-brand">VINTAGE AUDIO • HI-FI STEREO</div>
+
+              <!-- Turntable Platter & Vinyl Record -->
+              <div class="platter-well">
+                <div class="vinyl-disc" id="vinyl-disc">
+                  <div class="vinyl-groove-ring ring-1"></div>
+                  <div class="vinyl-groove-ring ring-2"></div>
+                  <div class="vinyl-groove-ring ring-3"></div>
+                  <div class="vinyl-center-label">
+                    <div class="label-inner-hole"></div>
+                    <span class="label-song-title">About You</span>
+                    <span class="label-artist">The 1975</span>
+                    <span class="label-rpm">33 ⅓ RPM</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stylized Tonearm with Needle -->
+              <div class="tonearm-assembly" id="tonearm">
+                <div class="tonearm-base"></div>
+                <div class="tonearm-rod"></div>
+                <div class="tonearm-headshell">
+                  <div class="tonearm-cartridge"></div>
+                </div>
+              </div>
+
+              <!-- Turntable Power Switch & Light -->
+              <div class="turntable-status-light" id="turntable-light"></div>
+            </div>
+
+            <!-- Vinyl Player Controls & Lyrics Card -->
+            <div class="turntable-controls-panel glass-panel">
+              <div class="now-playing-info">
+                <span class="track-badge">SEDANG DIMAINKAN</span>
+                <h2 class="track-title-large">About You</h2>
+                <h3 class="track-artist-large">The 1975 • Being Funny in a Foreign Language</h3>
+              </div>
+
+              <!-- Animated Equalizer Bars -->
+              <div class="equalizer-visualizer" id="equalizer-bars">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+              </div>
+
+              <!-- Audio Progress / Scrubber Bar -->
+              <div class="audio-progress-container">
+                <span id="audio-current-time" class="time-stamp">0:00</span>
+                <div class="audio-progress-bar-wrap" id="audio-seek-wrapper">
+                  <div class="audio-progress-fill" id="audio-progress-fill"></div>
+                  <div class="audio-progress-thumb" id="audio-progress-thumb"></div>
+                </div>
+                <span id="audio-duration" class="time-stamp">5:26</span>
+              </div>
+
+              <!-- Main Playback Buttons -->
+              <div class="player-action-buttons">
+                <button id="btn-audio-rewind" class="btn-ctrl-secondary" title="Undur 10 Saat" aria-label="Undur 10 saat">
+                  <i data-lucide="rotate-ccw"></i>
+                </button>
+                <button id="btn-audio-play-pause" class="btn-ctrl-primary" title="Mainkan / Jeda" aria-label="Mainkan atau jeda lagu">
+                  <i data-lucide="play" id="play-pause-icon"></i>
+                </button>
+                <button id="btn-audio-forward" class="btn-ctrl-secondary" title="Maju 10 Saat" aria-label="Maju 10 saat">
+                  <i data-lucide="rotate-cw"></i>
+                </button>
+              </div>
+
+              <!-- Lyrics Highlight Box -->
+              <div class="lyrics-quote-card">
+                <i data-lucide="quote" class="lyrics-quote-icon"></i>
+                <p class="lyrics-verse">"Do you think I have forgotten about you?"</p>
+                <p class="lyrics-sub">"There was something about you that now I can't remember... It's the same damn thing that made my heart surrender."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------ -->
+        <!-- SUB-MENU 4: GIFT (INTERACTIVE WISH)              -->
+        <!-- ------------------------------------------------ -->
+        <div id="subview-gift" class="subview hidden">
+          <div class="subview-header">
+            <span class="celebration-pill">🎁 Ungkapkan Keinginanmu 🎁</span>
+            <h1 class="subview-title">Kotak Impian & Hadiah ✨</h1>
+          </div>
+
+          <div class="wish-showcase-container">
+            <!-- Interactive Wish Card Form -->
+            <div class="wish-card glass-panel" id="wish-card-form">
+              <div class="wish-card-tape"></div>
+              <div class="wish-floating-deco deco-bow">🎀</div>
+              <div class="wish-floating-deco deco-sparkle">✨</div>
+
+              <!-- Soft Prompt Header -->
+              <div class="wish-prompt-section">
+                <div class="wish-prompt-avatar">💌</div>
+                <h2 class="wish-soft-prompt">
+                  "Di hari ulang tahunmu yang ke-21 ini, ada satu hal kecil yang ingin aku berikan untukmu, Septi. Boleh aku tahu, apa yang sedang kamu impikan saat ini?"
+                </h2>
+              </div>
+
+              <!-- Category Wishlist Option Cards -->
+              <div class="wish-options-label">Pilih salah satu kategori impianmu:</div>
+              <div class="wish-options-grid" id="wish-options-group">
+                <button type="button" class="wish-option-chip active" data-value="Sesuatu yang lucu">
+                  <span class="chip-icon">🧸</span>
+                  <span class="chip-text">Sesuatu yang lucu</span>
+                  <span class="chip-check">✓</span>
+                </button>
+                <button type="button" class="wish-option-chip" data-value="Sesuatu yang sering kamu pakai">
+                  <span class="chip-icon">👗</span>
+                  <span class="chip-text">Sesuatu yang sering dipakai</span>
+                  <span class="chip-check">✓</span>
+                </button>
+                <button type="button" class="wish-option-chip" data-value="Jalan-jalan atau Ngedate">
+                  <span class="chip-icon">🎡</span>
+                  <span class="chip-text">Jalan-jalan atau Nge-date</span>
+                  <span class="chip-check">✓</span>
+                </button>
+                <button type="button" class="wish-option-chip" data-value="Tulis Keinginan Sendiri">
+                  <span class="chip-icon">✍️</span>
+                  <span class="chip-text">Tulis Keinginan Sendiri</span>
+                  <span class="chip-check">✓</span>
+                </button>
+              </div>
+
+              <!-- Letter-Style Text Area -->
+              <div class="wish-input-wrapper" id="wish-input-container">
+                <label for="wish-custom-text" class="wish-input-label">Ceritakan impian kecilmu di sini:</label>
+                <div class="letter-notepad">
+                  <div class="notepad-lines-bg"></div>
+                  <textarea id="wish-custom-text" rows="3" placeholder="Tulis keinginan kecilmu di sini..." maxlength="300"></textarea>
+                </div>
+                <span class="wish-char-counter"><span id="char-count">0</span>/300</span>
+              </div>
+
+              <!-- Send Button -->
+              <div class="wish-action-area">
+                <button id="btn-submit-wish" class="btn-send-wish">
+                  <span class="btn-send-shimmer"></span>
+                  <span class="btn-send-content">
+                    <span class="btn-send-icon">💌</span>
+                    <span class="btn-send-text">Kirim Keinginan</span>
+                    <span class="btn-send-sparkle">✨</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Feedback Response Card (Appears after sending) -->
+            <div class="wish-feedback-card glass-panel hidden" id="wish-feedback-card">
+              <div class="feedback-envelope-icon">💖</div>
+              <span class="celebration-pill">✨ Keinginan Berhasil Dikirim ✨</span>
+              <h2 class="feedback-title">Keinginanmu Sudah Kami Catat!</h2>
+              <p class="feedback-message">
+                "Terima kasih ya sudah mau berbagi cerita denganku. Semoga keinginanmu segera terwujud! ✨"
+              </p>
+
+              <!-- Summary Box -->
+              <div class="wish-summary-box">
+                <div class="summary-item">
+                  <span class="summary-label">Kategori Pilihan:</span>
+                  <span class="summary-category" id="summary-category-display">-</span>
+                </div>
+                <div class="summary-item" style="margin-top: 8px;">
+                  <span class="summary-label">Catatan Impianmu:</span>
+                  <span class="summary-text" id="summary-text-display">"-"</span>
+                </div>
+              </div>
+
+              <!-- Action buttons (WhatsApp & Edit) -->
+              <div class="feedback-action-buttons">
+                <a id="btn-whatsapp-send" class="btn-wa-action" target="_blank" rel="noopener noreferrer">
+                  <i data-lucide="message-circle"></i>
+                  <span>Kirim Langsung ke WhatsApp 📲</span>
+                </a>
+                <button id="btn-edit-wish" class="btn-edit-action">
+                  <i data-lucide="pencil"></i>
+                  <span>Ubah Keinginan</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================== -->
+  <!-- LIGHTBOX MODAL FOR POLAROID PHOTO ZOOM        -->
+  <!-- ============================================== -->
+  <div id="polaroid-lightbox" class="lightbox-modal hidden" role="dialog" aria-modal="true">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Tutup Paparan">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="lightbox-polaroid">
+        <div class="lightbox-tape"></div>
+        <div class="lightbox-img-wrap">
+          <img id="lightbox-img" src="" alt="Zoom Memory">
+        </div>
+        <div class="lightbox-caption-area">
+          <h3 id="lightbox-title">Kenangan Indah</h3>
+          <p id="lightbox-date">Detik Berharga ✨</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Entry Point -->
+  <script src="script.js"></script>
+</body>
+</html>
